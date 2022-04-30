@@ -17,14 +17,14 @@
 <code>df.dtypes, df.columns, df.shape</code><br>
 
 * Missing and Duplicate Values
-  * To check missing values by using <code>df.isnull(), df.isnull().any(), df.isnull().sum()</code>
-  * To process missing values by using <code>df.dropna() ，df.fillna()</code>
-  * To check or delete duplicated values by using <code>df.duplicated(), df.drop_duplicates()</code>
+   * To check missing values by using <code>df.isnull(), df.isnull().any(), df.isnull().sum()</code>
+   * To process missing values by using <code>df.dropna() ，df.fillna()</code>
+   * To check or delete duplicated values by using <code>df.duplicated(), df.drop_duplicates()</code>
  
  * Manpulate data
-  * To replace eata by <code>replace()</code> such as <code>df["No"].replace(r'BA.$', value='NEW', regex=True, inplace = True)</code><br>
-  * To rank data by <code>rank()</code> such as <code>df["Ranking"] = df.rank(method="dense").astype("int")</code><br>
-  * To truncate data by <code>clip()</code> such as df["Days"] = df["Days"].clip(0,31)<br>
+   * To replace eata by <code>replace()</code> such as <code>df["No"].replace(r'BA.$', value='NEW', regex=True, inplace = True)</code><br>
+   * To rank data by <code>rank()</code> such as <code>df["Ranking"] = df.rank(method="dense").astype("int")</code><br>
+   * To truncate data by <code>clip()</code> such as df["Days"] = df["Days"].clip(0,31)<br>
   * To return unique data by <code>unique() and nunique()</code> such as df["gender"].unique()<br>
   * To process DataFrame by user defined function - <code>apply() or applymap()</code> such as <code>df["Number"].apply(lambda x: x+1)</code><br>
  
