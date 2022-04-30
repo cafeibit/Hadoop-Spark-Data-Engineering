@@ -25,14 +25,14 @@
    * To replace eata by <code>replace()</code> such as <code>df["No"].replace(r'BA.$', value='NEW', regex=True, inplace = True)</code><br>
    * To rank data by <code>rank()</code> such as <code>df["Ranking"] = df.rank(method="dense").astype("int")</code><br>
    * To truncate data by <code>clip()</code> such as df["Days"] = df["Days"].clip(0,31)<br>
-  * To return unique data by <code>unique() and nunique()</code> such as df["gender"].unique()<br>
-  * To process DataFrame by user defined function - <code>apply() or applymap()</code> such as <code>df["Number"].apply(lambda x: x+1)</code><br>
+   * To return unique data by <code>unique() and nunique()</code> such as df["gender"].unique()<br>
+   * To process DataFrame by user defined function - <code>apply() or applymap()</code> such as <code>df["Number"].apply(lambda x: x+1)</code><br>
  
  * Manpulate string
-  * <code>cat, contains, startswith/endswith, get, upper/lower, pad/center, repeat, slice_replace, split, strip/rstrip/lstrip, findall, extract/extractall</code>, examples: 
-    * <code>df.insert(2, "Name", df["Last Name"].str.cat(df["First Name"], sep=""))</code>
-    * <code>df["Phone"] = df["Phone"].str.slice_replace(3,7,"*"*4)</code>
-    * <code>df["Address"].str.extract("([\u4e00-\u9fa5]+)")</code>
+   * <code>cat, contains, startswith/endswith, get, upper/lower, pad/center, repeat, slice_replace, split, strip/rstrip/lstrip, findall, extract/extractall</code>, examples: 
+   * <code>df.insert(2, "Name", df["Last Name"].str.cat(df["First Name"], sep=""))</code>
+   * <code>df["Phone"] = df["Phone"].str.slice_replace(3,7,"*"*4)</code>
+   * <code>df["Address"].str.extract("([\u4e00-\u9fa5]+)")</code>
  
  * Manpulate Row/Column
    * To reset index after deleted NULL by <code>reset_index()</code> such as <code>df.reset_index(drop=True)</code>
