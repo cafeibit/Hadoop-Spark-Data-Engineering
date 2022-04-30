@@ -51,7 +51,7 @@
   * To fiter by <code>query()</code>
   * To tilter datatype by <code>select_dtypes()</code> such as <code>df.select_dtypes("int64")</code>
   * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]
-
+ 
 * Statistical operations on numerical data
-  * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
- * to statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
+   * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
+   * to statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
