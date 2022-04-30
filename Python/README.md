@@ -5,7 +5,7 @@
 * To use Python to read, manipulate, and analyze data; perform data cleaning, integration, reduction, and transformation techniques; and handle outliers or missing values to effectively prepare data for analytic tools.
 
 ### Data Wrangling by Pandas
-
+<a href=https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html>Python Pandas's DataFrame API</a>
 * Data Preview
 
 <code>import numpy as np</code><br>
