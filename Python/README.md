@@ -4,10 +4,10 @@
 * To use different technical and analytical aspects of data preprocessing – data collection, data cleaning, data integration, data reduction, and data transformation and get to grips with implementing them using the open source Python programming environment, lead to more effective decision making. 
 * To use Python to read, manipulate, and analyze data; perform data cleaning, integration, reduction, and transformation techniques; and handle outliers or missing values to effectively prepare data for analytic tools.
 
-### Data Wrangling by Pandas <a href=https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html>Python Pandas's DataFrame API</a>
+### Data Wrangling by Pandas 
+<a href=https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html>Python Pandas's DataFrame API</a>
 
 * Data Preview
-
   * Methods to check related infomration, exmaples:
 <code>import numpy as np</code><br>
 <code>import pandas as pd</code><br>
@@ -49,5 +49,9 @@
   * To slice DataFrame such as <code>df[:5]</code>
   * To filter row by expression <code>df[bool_vec]</code>
   * To fiter by <code>query()</code>
-  * to tilter datatype by <code>select_dtypes()</code> such as <code>df.select_dtypes("int64")</code>
-  * 
+  * To tilter datatype by <code>select_dtypes()</code> such as <code>df.select_dtypes("int64")</code>
+  * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]
+
+* Statistical operations on numerical data
+  * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
+ * to statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
