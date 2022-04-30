@@ -54,4 +54,4 @@
  
 * Statistical operations on numerical data
    * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
-   * to statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
+   * To statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
