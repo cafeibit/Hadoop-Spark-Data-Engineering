@@ -6,7 +6,10 @@
 
 ### Data Wrangling by Pandas
 
+* Data Preview
+
 <code>import numpy as np</code><br>
 <code>import pandas as pd</code><br>
 <code>df = pd.DataFrame()</code><br>
-<code>df.info()</code> or <code>df.describe()</code>
+<code>df.info()</code> or <code>df.describe()</code><br>
+<code>head(), tail(), sample()</code><br>
