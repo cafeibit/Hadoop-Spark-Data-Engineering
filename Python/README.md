@@ -59,8 +59,8 @@
  ### Data Visualizations by Matplotlib
  Matplotlib is a 2D plotting library for Python that produces publication-quality graphics in a variety of hardcopy formats and in a cross-platform interactive environment. With Matplotlib, developers can generate plots, histograms, power spectra, bar graphs, error graphs, scatter plots, etc. with just a few lines of code.
  
- ##### Simple Line Chart, for example: 
- *  <code>%matplotlib inline</code><br>
+ #### Simple Line Chart, for example: 
+ * <code>%matplotlib inline</code><br>
    <code>import matplotlib.pyplot as plt</code><br>
    <code>plt.style.use('seaborn-whitegrid')</code><br>
    <code>import numpy as np</code><br>
@@ -107,4 +107,33 @@
   <code>xlabel='x', ylabel='sin(x)',</code><br>
   <code>title='A Simple Plot');</code><br>
   
-  
+#### Simple Scatter Plot
+* <code>x = np.linspace(0, 10, 30)</code><br>
+  <code>y = np.sin(x)</code><br>
+...
+  <code>plt.plot(x, y, 'o', color='black');</code><br>
+  <code>rng = np.random.RandomState(0)</code><br>
+  <code>for marker in ['o', '.', ',', 'x', '+', 'v', '^', '<', '>', 's', 'd']:</code><br>
+    <code>plt.plot(rng.rand(5), rng.rand(5), marker,</code><br>
+             <code>label="marker='{0}'".format(marker))</code><br>
+  <code>plt.legend(numpoints=1)</code><br>
+  <code>plt.xlim(0, 1.8);</code><br>
+...
+  <code>plt.plot(x, y, '-ok');</code><br>
+...
+  <code>plt.plot(x, y, '-p', color='gray',</code><br>
+         <code>markersize=15, linewidth=4,</code><br>
+         <code>markerfacecolor='white',</code><br>
+         <code>markeredgecolor='gray',</code><br>
+         <code>markeredgewidth=2)</code><br>
+  <code>plt.ylim(-1.2, 1.2);</code><br>
+* <code>plt.scatter(x, y, marker='o');</code><br>
+ ...
+ <code>rng = np.random.RandomState(0)</code><br>
+ <code>x = rng.randn(100)</code><br>
+ <code>y = rng.randn(100)</code><br>
+ <code>colors = rng.rand(100)</code><br>
+ <code>sizes = 1000 * rng.rand(100)</code><br>
+ <code>plt.scatter(x, y, c=colors, s=sizes, alpha=0.3,</code><br>
+            <code>cmap='viridis')</code><br>
+ <code>plt.colorbar();</code><br>
