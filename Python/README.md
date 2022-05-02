@@ -41,7 +41,8 @@
    * To drop row/column by <code>drop()</code> such as <code>df.drop(columns=["mark"])</code>
    * To convert wide table to long table (tabular data to tree data) by <code>melt()</code> such as <code>df.melt(id_vars="Name", var_name="Subject", value_name="Score")</code>
    * To turn a long table into a wide table (tree data into tabular data) by <code>pivot()</code> such as <code>df.pivot(index='Name', columns='Subject', values='Score')</code> or <code>df1.set_index(['Name','Subject']).unstack('Subject')</code>
-   * To group and pivot Tables by <code>groupby() and pivot_table()</code> such as <code>df.groupby("Subject").mean()</code> and <code>df_long.pivot_table(index=["Student", "School"], columns='Class', values='Grade', margins=True, aggfunc='sum').reset_index()</code><br>
+   * To group and pivot Tables by <code>groupby() and pivot_table()</code> such as <code>df.groupby("Subject").mean()</code> and <code>df_long.pivot_table(index=["Student", "School"], columns='Class', values='Grade', margins=True, aggfunc='sum').reset_index()</code>
+
 * Data filtering
   * To select column by <code>df[col]</code>
   * To select row with index by <code>df.loc[label] or df.iloc[loc]</code>
@@ -50,7 +51,7 @@
   * To fiter by <code>query()</code>
   * To tilter datatype by <code>select_dtypes()</code> such as <code>df.select_dtypes("int64")</code>
   * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]
- 
+
 * Statistical operations on numerical data
    * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
    * To statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
@@ -58,8 +59,30 @@
  ### Data Visualizations by Matplotlib
  Matplotlib is a 2D plotting library for Python that produces publication-quality graphics in a variety of hardcopy formats and in a cross-platform interactive environment. With Matplotlib, developers can generate plots, histograms, power spectra, bar graphs, error graphs, scatter plots, etc. with just a few lines of code.
  
- * <code>%matplotlib inline</code><br>
+ * Simple Line Chart, for example: <br>
+   <code>%matplotlib inline</code><br>
    <code>import matplotlib.pyplot as plt</code><br>
    <code>plt.style.use('seaborn-whitegrid')</code><br>
-   <code>import numpy as np</code>
- * 
+   <code>import numpy as np</code><br>
+   <code>fig = plt.figure()</code><br>
+   <code>ax = plt.axes()</code><br>
+   <code>x = np.linspace(0, 10, 1000)</code><br>
+   <code>ax.plot(x, np.sin(x)); or plt.plot(x, np.sin(x)); or plt.plot(x, np.cos(x));</code>
+ * Adjusting Line Charts: Line Color and Style<br>
+   <code>plt.plot(x, np.sin(x - 0), color='blue')</code><br>
+   <code>plt.plot(x, np.sin(x - 1), color='g')</code><br>    # rgbcmyk</code><br>
+   <code>plt.plot(x, np.sin(x - 2), color='0.75')        # 0-1</code><br>
+   <code>plt.plot(x, np.sin(x - 3), color='#FFDD44')     # 16Hex RRGGBB</code><br>
+   <code>plt.plot(x, np.sin(x - 4), color=(1.0,0.2,0.3)) # RGB 0-1</code><br>
+   <code>plt.plot(x, np.sin(x - 5), color='chartreuse');</code><br>
+  ...<br>
+  <code>plt.plot(x, x + 0, linestyle='solid')</code><br>
+  <code>plt.plot(x, x + 1, linestyle='dashed')</code><br>
+  <code>plt.plot(x, x + 2, linestyle='dashdot')</code><br>
+  <code>plt.plot(x, x + 3, linestyle='dotted');</code><br>
+  ...<br>
+  <code>plt.plot(x, x + 4, linestyle='-')  </code><br>
+  <code>plt.plot(x, x + 5, linestyle='--') </code><br>
+  <code>plt.plot(x, x + 6, linestyle='-.') </code><br>
+  <code>plt.plot(x, x + 7, linestyle=':');</code><br>
+* 
