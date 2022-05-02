@@ -59,8 +59,8 @@
  ### Data Visualizations by Matplotlib
  Matplotlib is a 2D plotting library for Python that produces publication-quality graphics in a variety of hardcopy formats and in a cross-platform interactive environment. With Matplotlib, developers can generate plots, histograms, power spectra, bar graphs, error graphs, scatter plots, etc. with just a few lines of code.
  
- * Simple Line Chart, for example: <br>
-   <code>%matplotlib inline</code><br>
+ ##### Simple Line Chart, for example: 
+ *  <code>%matplotlib inline</code><br>
    <code>import matplotlib.pyplot as plt</code><br>
    <code>plt.style.use('seaborn-whitegrid')</code><br>
    <code>import numpy as np</code><br>
@@ -85,4 +85,26 @@
   <code>plt.plot(x, x + 5, linestyle='--') </code><br>
   <code>plt.plot(x, x + 6, linestyle='-.') </code><br>
   <code>plt.plot(x, x + 7, linestyle=':');</code><br>
-* 
+  ...<br>
+  <code>plt.plot(x, x + 0, '-g') </code><br>
+  <code>plt.plot(x, x + 1, '--c') </code><br>
+  <code>plt.plot(x, x + 2, '-.k') </code><br>
+  <code>plt.plot(x, x + 3, ':r');</code><br>
+* Adjusting Line Charts: Axis Ranges and Label<br>
+  <code>plt.plot(x, np.sin(x))</code><br>
+  <code>plt.xlim(10, 0)</code><br>
+  <code>plt.ylim(1.2, -1.2);</code><br>
+  ... or <br>
+  <code>plt.plot(x, np.sin(x))</code><br>
+  <code>plt.axis([-1, 11, -1.5, 1.5]);</code><br>
+  <code>plt.axis('tight'); or plt.axis('equal');</code><br>
+  <code>plt.title("A Sine Curve")</code><br>
+  <code>plt.xlabel("x")</code><br>
+  <code>plt.ylabel("sin(x)");</code><br>
+  <code>plt.legend();</code><br>
+  ...<br>
+  <code>ax.set(xlim=(0, 10), ylim=(-2, 2),</code><br>
+  <code>xlabel='x', ylabel='sin(x)',</code><br>
+  <code>title='A Simple Plot');</code><br>
+  
+  
