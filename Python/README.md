@@ -56,9 +56,10 @@
    * To statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
 
  ### Data Visualizations by Matplotlib
+ Matplotlib is a 2D plotting library for Python that produces publication-quality graphics in a variety of hardcopy formats and in a cross-platform interactive environment. With Matplotlib, developers can generate plots, histograms, power spectra, bar graphs, error graphs, scatter plots, etc. with just a few lines of code.
  
- * <code>%matplotlib inline<br>
-   import matplotlib.pyplot as plt<br>
-   plt.style.use('seaborn-whitegrid')<br>
-   import numpy as np</code>
+ * <code>%matplotlib inline</code><br>
+   <code>import matplotlib.pyplot as plt</code><br>
+   <code>plt.style.use('seaborn-whitegrid')</code><br>
+   <code>import numpy as np</code>
  * 
