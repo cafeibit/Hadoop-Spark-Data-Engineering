@@ -49,7 +49,15 @@
   * To filter row by expression <code>df[bool_vec]</code>
   * To fiter by <code>query()</code>
   * To tilter datatype by <code>select_dtypes()</code> such as <code>df.select_dtypes("int64")</code>
-  * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]<br>
+  * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]
+ 
 * Statistical operations on numerical data
    * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
    * To statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
+
+ ### Data Visualizations by Matplotlib
+ 
+ * <code>%matplotlib inline
+         import matplotlib.pyplot as plt
+         plt.style.use('seaborn-whitegrid')
+         import numpy as np</code>
