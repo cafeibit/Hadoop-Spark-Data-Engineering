@@ -57,7 +57,8 @@
 
  ### Data Visualizations by Matplotlib
  
- * <code>%matplotlib inline
-         import matplotlib.pyplot as plt
-         plt.style.use('seaborn-whitegrid')
-         import numpy as np</code>
+ * <code>%matplotlib inline<br>
+   import matplotlib.pyplot as plt<br>
+   plt.style.use('seaborn-whitegrid')<br>
+   import numpy as np</code>
+ * 
