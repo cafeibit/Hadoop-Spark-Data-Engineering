@@ -41,8 +41,7 @@
    * To drop row/column by <code>drop()</code> such as <code>df.drop(columns=["mark"])</code>
    * To convert wide table to long table (tabular data to tree data) by <code>melt()</code> such as <code>df.melt(id_vars="Name", var_name="Subject", value_name="Score")</code>
    * To turn a long table into a wide table (tree data into tabular data) by <code>pivot()</code> such as <code>df.pivot(index='Name', columns='Subject', values='Score')</code> or <code>df1.set_index(['Name','Subject']).unstack('Subject')</code>
-   * To group and pivot Tables by <code>groupby() and pivot_table()</code> such as <code>df.groupby("Subject").mean()</code> and <code>df_long.pivot_table(index=["Student", "School"], columns='Class', values='Grade', margins=True, aggfunc='sum').reset_index()</code>
-
+   * To group and pivot Tables by <code>groupby() and pivot_table()</code> such as <code>df.groupby("Subject").mean()</code> and <code>df_long.pivot_table(index=["Student", "School"], columns='Class', values='Grade', margins=True, aggfunc='sum').reset_index()</code><br>
 * Data filtering
   * To select column by <code>df[col]</code>
   * To select row with index by <code>df.loc[label] or df.iloc[loc]</code>
@@ -50,8 +49,7 @@
   * To filter row by expression <code>df[bool_vec]</code>
   * To fiter by <code>query()</code>
   * To tilter datatype by <code>select_dtypes()</code> such as <code>df.select_dtypes("int64")</code>
-  * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]
- 
+  * To verify values exist or not by <code>isin()</code> such as <code>name_list = ["Kevin", "Tom"] df[df["Name"].isin(name_list)]<br>
 * Statistical operations on numerical data
    * <code>count, sum, mean, median, mod, max, min, std, var, quantile, skew, kurt, cumprod</code>
    * To statistic by <code>cumsum()</code> such as <code>df["Total sales"] = df["sales"].cumsum()</code>
