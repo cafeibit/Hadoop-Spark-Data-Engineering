@@ -21,7 +21,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * <b>Cassandra</b> is a scalable, NoSQL database designed to have no single point of failure.
 
 * In the Analyze Process/Pipelines stage<br>
-  * <b>Airflow</b> has a modular architecture and uses uses a message queue to orchestrate an arbitrary number of workers, ready to scale to infinity.
+  * <b>Airflow</b> has a modular architecture and uses a message queue to orchestrate an arbitrary number of workers, ready to scale to infinity.
   * Airflow pipelines are defined in Python, allowing for dynamic pipeline generation. This allows for writing code that instantiates pipelines dynamically.
   * Easily define your own operators and extend libraries to fit the level of abstraction that suits your environment. 
   * Airflow pipelines are lean and explicit. Parametrization is built into its core using the powerful Jinja templating engine.
