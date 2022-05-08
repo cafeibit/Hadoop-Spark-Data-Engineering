@@ -20,8 +20,8 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * <b>HBase</b> is a column-oriented non-relational database system that runs on top of HDFS. It provides real time wrangling access to the Hadoop file system. HBase uses hash tables to store data in indexes and allow for random access of data, which makes lookups faster.
   * <b>Cassandra</b> is a scalable, NoSQL database designed to have no single point of failure.
 
-* In the Analyze Process/Pipelines stage<br>
-  * <b>Airflow</b> has a modular architecture and uses a message queue to orchestrate an arbitrary number of workers, ready to scale to infinity.
+* In the Analyze Process/Pipelines stage by **Airflow**<br>
+  * Airflow has a modular architecture and uses a message queue to orchestrate an arbitrary number of workers, ready to scale to infinity.
   * Airflow pipelines are defined in Python, allowing for dynamic pipeline generation. This allows for writing code that instantiates pipelines dynamically.
   * Easily define your own operators and extend libraries to fit the level of abstraction that suits your environment. 
   * Airflow pipelines are lean and explicit. Parametrization is built into its core using the powerful Jinja templating engine.
