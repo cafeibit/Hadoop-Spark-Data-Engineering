@@ -70,24 +70,26 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
 * There are several deployment modes of Spark, and what are the characteristics of each mode
 
- * Local mode
-   Spark does not have to run in the hadoop cluster, it can be specified locally by starting multiple threads. Running Spark applications directly locally in a multi-threaded manner is generally for the convenience of debugging.
+  * Local mode
+    Spark does not have to run in the hadoop cluster, it can be specified locally by starting multiple threads. Running Spark applications directly locally in a multi-threaded manner is generally for the convenience of debugging.
 
-   There are three types of local mode
-   --local : start only one executor
-   --local[k] : start k executors
-   --local[*] : start executors with the same number of cpus
+    There are three types of local mode
+   
+    --local : start only one executor
+    --local[k] : start k executors
+    --local[*] : start executors with the same number of cpus
 
-  * Standalone mode
+   * Standalone mode
     Distributed deployment cluster with complete services, resource management and task monitoring are monitored by Spark itself, and this mode is also the basis of other modes.
 
-  * Spark on yarn mode
-    Distributed deployment of clusters, resource and task monitoring are managed by yarn, but currently only supports coarse-grained resource allocation, including cluster and client operation modes, cluster is suitable for production, driver runs on cluster sub-nodes, with fault tolerance, client is suitable for debugging, The driver runs on the client side.
+   * Spark on yarn mode
 
-  * Spark On Mesos mode
+     Distributed deployment of clusters, resource and task monitoring are managed by yarn, but currently only supports coarse-grained resource allocation, including cluster and client operation modes, cluster is suitable for production, driver runs on cluster sub-nodes, with fault tolerance, client is suitable for debugging, The driver runs on the client side.
 
-    This model is officially recommended (of course, one of the reasons is blood relationship). It is precisely because Spark was developed with Mesos in mind, so now, Spark running on Mesos will be more flexible and more natural than running on YARN. Users can choose one of two scheduling modes to run their applications:
+   * Spark On Mesos mode
+
+     This model is officially recommended (of course, one of the reasons is blood relationship). It is precisely because Spark was developed with Mesos in mind, so now, Spark running on Mesos will be more flexible and more natural than running on YARN. Users can choose one of two scheduling modes to run their applications:
     
-    --Coarse-grained Mode: The running environment of each application consists of a Dirver and several Executors. Each Executor occupies several resources and can run multiple Tasks (corresponding to how many "slots"). Before each task of the application program is officially run, all resources in the running environment need to be applied for, and these resources must be occupied during the running process.
+     --Coarse-grained Mode: The running environment of each application consists of a Dirver and several Executors. Each Executor occupies several resources and can run multiple Tasks (corresponding to how many "slots"). Before each task of the application program is officially run, all resources in the running environment need to be applied for, and these resources must be occupied during the running process.
 
-   --Fine-grained Mode: Since the coarse-grained mode will cause a lot of waste of resources, Spark On Mesos also provides another scheduling mode: the fine-grained mode, which is similar to the current cloud computing, the idea is on-demand distribute.
+     --Fine-grained Mode: Since the coarse-grained mode will cause a lot of waste of resources, Spark On Mesos also provides another scheduling mode: the fine-grained mode, which is similar to the current cloud computing, the idea is on-demand distribute.
