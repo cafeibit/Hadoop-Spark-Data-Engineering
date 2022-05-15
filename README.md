@@ -39,9 +39,53 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
 ## Master Spark Data Engineering
 
-### Components of Spark
+### Spark Bsics
 
-* Master: manage cluster and nodes, not participatingin computing
-* Worker: computing node, process not participating in computing, report to master
-* Driver: running program's main method, createing object of spark context
-* 
+* Components of Spark
+
+ * Master: manage cluster and nodes, not participatingin computing
+ * Worker: computing node, process not participating in computing, report to master
+ * Driver: running program's main method, createing object of spark context
+ * Spark context: Controls the entire application lifecycle, including components such as the dagsheduler and task scheduler.
+ * Client: User-submitted program entry.
+
+* How Spark works
+         
+  * After the user submits the job on the client side, the driver will run the main method and create the spark context. 
+  * Execute the add operator to form a dag graph and input it to the dagscheduler, 
+  * and divide the stages according to the dependencies between add and input the task scheduler. 
+  * The task scheduler divides the stage into task sets and distributes them to the executors of each node for execution.
+
+* Spark streaming and how it basically works
+
+  * Spark streaming is an extension of the spark core API that can be used to process large-scale, high-throughput, fault-tolerant real-time data streams.
+  * It supports reading data from a variety of data sources, such as Kafka, Flume, Twitter and TCP Socket, and can use operators such as map, reduce, join and window to process data, and the processed data can be saved to the file system, database waiting for storage.
+  * The basic working principle of Spark streaming is: accept the real-time input data stream, and then split the data into batches, such as encapsulating the data collected every second into a batch, and then send each batch to the spark computing engine for processing, and finally A result data stream will be produced, and the data in it is also composed of batches one by one.
+
+* There are several deployment modes of Spark, and what are the characteristics of each mode
+
+ * Local mode
+
+   Spark does not have to run in the hadoop cluster, it can be specified locally by starting multiple threads. Running Spark applications directly locally in a multi-threaded manner is generally for the convenience of debugging.
+
+   There are three types of local mode
+
+   --local : start only one executor
+     local[k] : start k executors
+     local[*] : start executors with the same number of cpus
+
+  * Standalone mode
+
+        Distributed deployment cluster with complete services, resource management and task monitoring are monitored by Spark itself, and this mode is also the basis of other modes.
+
+3) Spark on yarn mode
+
+        Distributed deployment of clusters, resource and task monitoring are managed by yarn, but currently only supports coarse-grained resource allocation, including cluster and client operation modes, cluster is suitable for production, driver runs on cluster sub-nodes, with fault tolerance, client is suitable for debugging, The driver runs on the client side.
+
+4) Spark On Mesos mode
+
+        This model is officially recommended (of course, one of the reasons is blood relationship). It is precisely because Spark was developed with Mesos in mind, so now, Spark running on Mesos will be more flexible and more natural than running on YARN. Users can choose one of two scheduling modes to run their applications:
+
+Coarse-grained Mode: The running environment of each application consists of a Dirver and several Executors. Each Executor occupies several resources and can run multiple Tasks (corresponding to how many "slots"). Before each task of the application program is officially run, all resources in the running environment need to be applied for, and these resources must be occupied during the running process.
+
+Fine-grained Mode: Since the coarse-grained mode will cause a lot of waste of resources, Spark On Mesos also provides another scheduling mode: the fine-grained mode, which is similar to the current cloud computing, the idea is on-demand distribute.
