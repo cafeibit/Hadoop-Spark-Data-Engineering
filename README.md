@@ -39,3 +39,9 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
 ## Master Spark Data Engineering
 
+### Components of Spark
+
+* Master: manage cluster and nodes, not participatingin computing
+* Worker: computing node, process not participating in computing, report to master
+* Driver: running program's main method, createing object of spark context
+* 
