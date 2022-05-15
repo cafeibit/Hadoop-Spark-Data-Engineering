@@ -155,7 +155,34 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
   * What are the pitfalls of RDDs?
  
-         1) Fine-grained write and update operations (such as web crawlers) are not supported, and spark writes data in coarse-grained terms. The so-called coarse-grained is to write data in batches, in order to improve efficiency. However, reading data is fine-grained, which means that it can be read one by one.
+          1) Fine-grained write and update operations (such as web crawlers) are not supported, and spark writes data in coarse-grained terms. The so-called coarse-grained is to write data in batches, in order to improve efficiency. However, reading data is fine-grained, which means that it can be read one by one.
 
-         2) Incremental iterative calculation is not supported, but Flink does
+          2) Incremental iterative calculation is not supported, but Flink does
+
+  * What are the types of data locality in Spark?
+    
+    There are three types of data locality in Spark:
+
+          1)  PROCESS_LOCAL refers to reading data cached on the local node
+    
+          2) NODE_LOCAL refers to reading the local node hard disk data
+    
+          3) ANY refers to reading non-local node data
+    
+    Usually read data PROCESS_LOCAL>NODE_LOCAL>ANY, try to read data in PROCESS_LOCAL or NODE_LOCAL mode. Among them, PROCESS_LOCAL is also related to the cache. If the RDD is often used, the RDD is cached into the memory. Note that since the cache is lazy, it must be triggered by an action to actually cache the RDD into the memory.
+    
+   * Why does Spark persist, and in what scenarios should the persist operation be performed? Why Persistence?
+
+     All the more complex algorithms of spark will have a persistent figure. The default data of spark is stored in memory, and many contents of spark are stored in memory, which is very suitable for high-speed iteration. There is only the first input data in 1000 steps, and no temporary data is generated in the middle, but Distributed systems are very risky, so they are prone to errors and must be fault-tolerant. RDD errors or sharding can be calculated based on lineage. If the parent RDD is not persisted or cached, it needs to be done all over again. Normally, persist is used in the following scenarios:
+
+         1) The calculation of a certain step is very time-consuming and needs to be persisted
+    
+         2) The calculation chain is very long, and it takes a lot of steps to restore it, which is very easy to use, persist
+    
+         3) The rdd where the checkpoint is located should be persisted persist. Before checkpointing, it is necessary to persist, write rdd.cache or rdd.persist, save the result, and then write the checkpoint operation, which will execute very fast, and there is no need to recalculate the rdd chain. persist before checkpoint.
+   
+         4) After shuffle, persist, shuffle requires network transmission, the risk is very high, the data is lost again, and the recovery cost is very high
+
+         5) Persist before shuffle, the framework will persist data to disk by default, this is done automatically by the framework 
+
 
