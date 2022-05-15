@@ -49,7 +49,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * Spark context: Controls the entire application lifecycle, including components such as the dagsheduler and task scheduler.
   * Client: User-submitted program entry.
 
-* How Spark works
+* Spark works and advantages
          
   * After the user submits the job on the client side, the driver will run the main method and create the spark context. 
   * Execute the add operator to form a dag graph and input it to the dagscheduler, 
@@ -60,6 +60,14 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * Efficient scheduling algorithm, based on DAG;
   * Fault tolerance mechanism Linage, the essence is DAG and Lingae
 
+  * How spark works
+         ① Build the running environment of the Application, and the Driver creates a SparkContext
+         ② SparkContext applies to the resource manager (Standalone, Mesos, Yarn) for Executor resources, and the resource manager starts the StandaloneExecutorbackend (Executor)
+         ③ Executor applies for Task to SparkContext
+         ④ SparkContext distributes the application to the Executor
+         ⑤ SparkContext builds a DAG graph, DAGScheduler parses the DAG graph into stages, each stage has multiple tasks, forms a taskset and sends it to the task scheduler, and the task scheduler sends the task to the Executor to run
+         ⑥ Task runs on Executor and releases all resources after running
+         
 * The principle of the active-standby switching mechanism of Spark
 
   * Master can actually be configured with two. Spark's native standalone mode supports master-standby switching. When the Active Master node hangs up, the Standby Master can be switched to the Active Master.
