@@ -129,3 +129,28 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
          3) Tuning at the JVM level: set the appropriate amount of resources, set a reasonable JVM, enable efficient serialization methods such as kyro, increase off head memory, etc.
 
+  * Where is data locality determined?
+    --Which machine the specific task runs on is determined when the dag divides the stages
+    
+  * What is the elasticity of RDD?
+  
+         1) Automatically switch between memory and disk storage;
+
+         2) Efficient fault tolerance based on Lineage;
+
+         3) If the task fails, it will automatically retry a certain number of times;
+
+         4) If the stage fails, it will automatically retry a certain number of times, and only the failed shards will be calculated;
+
+         5) checkpoint and persist, persistent cache after data calculation;
+
+         6) Data scheduling flexibility, DAG TASK scheduling has nothing to do with resources;
+
+         7) High elasticity of data sharding.    
+
+  * What are the pitfalls of RDDs?
+ 
+         1) Fine-grained write and update operations (such as web crawlers) are not supported, and spark writes data in coarse-grained terms. The so-called coarse-grained is to write data in batches, in order to improve efficiency. However, reading data is fine-grained, which means that it can be read one by one.
+
+         2) Incremental iterative calculation is not supported, but Flink does
+
