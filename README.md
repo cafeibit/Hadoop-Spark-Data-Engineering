@@ -103,6 +103,25 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
      Distributed deployment of clusters, resource and task monitoring are managed by yarn, but currently only supports coarse-grained resource allocation, including cluster and client operation modes, cluster is suitable for production, driver runs on cluster sub-nodes, with fault tolerance, client is suitable for debugging, The driver runs on the client side.
 
+    Describe the process by which Yarn performs a task?
+    
+         1) The client client submits the Application to the ResouceManager, and the ResouceManager accepts the Application and selects a node according to the cluster resource status to start the Application's task scheduler driver (ApplicationMaster)
+         
+         2) The ResouceManager finds the node and commands the nodeManager on the node to start a new JVM process to run the driver (ApplicationMaster) part of the program. When the driver (ApplicationMaster) starts, it will first register with the ResourceManager, indicating that it is responsible for the running of the current program.
+
+         3) The driver (ApplicationMaster) starts to download various resources such as related jar packages, and determines the specific resource content applied by the ResourceManager based on the downloaded jar and other information.
+         
+         4) After receiving the application from the driver (ApplicationMaster), the ResouceManager will satisfy the resource allocation request to the maximum extent, and send the metadata information of the resource to the driver (ApplicationMaster)
+         
+         5) After receiving the resource metadata information sent by the driver (ApplicationMaster), it will send an instruction to the NodeManager on the specific machine according to the metadata information to start the specific container.
+         
+         6) NodeManager receives the instruction from the driver and starts the container. After the container is started, it must register with the driver (ApplicationMaster).
+         
+         7) The driver (ApplicationMaster) receives the container's registration and starts to schedule and calculate tasks until the task is completed.
+        
+         **One detail to pay attention to:** 
+         Note: If the ResourceManager fails to satisfy the resource request of the driver (ApplicationMaster) for the first time, and later finds that there are idle resources, it will actively send the metadata information of the available resources to the driver (ApplicationMaster) to provide more resources. for running the current program.
+    
    * Spark On Mesos mode
 
      This model is officially recommended (of course, one of the reasons is blood relationship). It is precisely because Spark was developed with Mesos in mind, so now, Spark running on Mesos will be more flexible and more natural than running on YARN. Users can choose one of two scheduling modes to run their applications:
