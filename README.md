@@ -118,3 +118,14 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * From a low-level point of view, the difference between the two is not small. Hadoop MapReduce is sort-based, and records entering combine() and reduce() must be sorted first. The advantage of this is that combine/reduce() can handle large-scale data, because its input data can be obtained through outflow (mapper sorts each piece of data first, and reducer's shuffle merges each sorted piece of data). The current Spark default selection is hash-based, usually HashMap is used to aggregate the shuffled data, and the data will not be sorted in advance. If users need sorted data, they need to call operations like sortByKey() themselves; if you are a Spark 1.1 user, you can set spark.shuffle.manager to sort, and the data will be sorted. In Spark 1.2, sort will be the default Shuffle implementation.
   
   * From an implementation point of view, there are many differences between the two. Hadoop MapReduce divides the processing flow into distinct stages: map(), spill, merge, shuffle, sort, reduce(), etc. Each stage has its own responsibilities, and the functions of each stage can be realized one by one according to the procedural programming idea. In Spark, there is no such clearly functional stage, only different stages and a series of transformation(), so operations such as spill, merge, aggregate need to be implied in transformation(). If we call the process of dividing data and persisting data on the map side as shuffle write, and the process of reading data into reducer and aggregate data as shuffle read. So in Spark, the question becomes how to add the processing logic of shuffle write and shuffle read to the logical or physical execution graph of the job? And how should the two processing logic be implemented efficiently? Shuffle write Because the data is not required to be ordered, the task of shuffle write is very simple: partition the data well and make it persistent. The reason for persistence is to reduce memory storage space pressure on the one hand, and fault-tolerance on the other hand.
+
+* How to optimize Spark?
+
+  * Spark tuning is more complicated, but it can be roughly divided into three aspects:
+
+         1) Tuning at the platform level: prevent unnecessary jar package distribution, improve data locality, and select efficient storage formats such as parquet
+
+         2) Application-level tuning: The optimization of filter operators reduces too many small tasks, reduces the resource overhead of a single record, handles data skew, reuses RDD for caching, and executes jobs in parallel, etc.
+
+         3) Tuning at the JVM level: set the appropriate amount of resources, set a reasonable JVM, enable efficient serialization methods such as kyro, increase off head memory, etc.
+
