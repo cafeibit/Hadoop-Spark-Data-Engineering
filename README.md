@@ -185,4 +185,8 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
          5) Persist before shuffle, the framework will persist data to disk by default, this is done automatically by the framework 
 
-
+  * Introduce the join operation optimization experience?
+          
+          In fact, there are two common types of join: map-side join and reduce-side join. When joining large and small tables, using map-side joins can significantly improve efficiency. Associating multiple pieces of data is a very common usage in data processing, but in distributed computing systems, this problem often becomes very troublesome, because the join operation provided by the framework generally sends all data to all the data according to the key. Go to the reduce partition, which is the process of shuffle. Causes a lot of network and disk IO consumption, and the operation efficiency is extremely low. This process is generally called reduce-side-join. If one of the tables is small, we can implement data association on the map side by ourselves, skip the process of shuffling a large amount of data, and the running time is greatly shortened. Depending on the data, the performance may be several times to dozens of times. promote.
+          
+          
