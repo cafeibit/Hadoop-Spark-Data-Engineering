@@ -122,6 +122,16 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
          **One detail to pay attention to:** 
          Note: If the ResourceManager fails to satisfy the resource request of the driver (ApplicationMaster) for the first time, and later finds that there are idle resources, it will actively send the metadata information of the available resources to the driver (ApplicationMaster) to provide more resources. for running the current program.
     
+     What are the advantages of Spark on Yarn mode?
+     
+         1) Share cluster resources with other computing frameworks (Spark framework and MapReduce framework run at the same time, if Yarn is not used for resource allocation, MapReduce will allocate very few memory resources, which is inefficient); resources are allocated on demand, thereby improving cluster resource utilization, etc.
+
+         2) Compared with the Standalone mode that comes with Spark, Yarn's resource allocation is more detailed.
+
+         3) Application deployment is simplified. For example, after applications of various frameworks such as Spark and Storm are submitted by the client, Yarn is responsible for resource management and scheduling, using Container as a unit of resource isolation, and using it as a unit to use memory, cpu, etc.
+
+         4) Yarn manages multiple services running in the Yarn cluster at the same time by means of queues, and can adjust the corresponding resource usage according to different types of application load conditions to achieve resource elastic management. 
+         
    * Spark On Mesos mode
 
      This model is officially recommended (of course, one of the reasons is blood relationship). It is precisely because Spark was developed with Mesos in mind, so now, Spark running on Mesos will be more flexible and more natural than running on YARN. Users can choose one of two scheduling modes to run their applications:
