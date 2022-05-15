@@ -120,9 +120,9 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * From an implementation point of view, there are many differences between the two. Hadoop MapReduce divides the processing flow into distinct stages: map(), spill, merge, shuffle, sort, reduce(), etc. Each stage has its own responsibilities, and the functions of each stage can be realized one by one according to the procedural programming idea. In Spark, there is no such clearly functional stage, only different stages and a series of transformation(), so operations such as spill, merge, aggregate need to be implied in transformation(). If we call the process of dividing data and persisting data on the map side as shuffle write, and the process of reading data into reducer and aggregate data as shuffle read. So in Spark, the question becomes how to add the processing logic of shuffle write and shuffle read to the logical or physical execution graph of the job? And how should the two processing logic be implemented efficiently? Shuffle write Because the data is not required to be ordered, the task of shuffle write is very simple: partition the data well and make it persistent. The reason for persistence is to reduce memory storage space pressure on the one hand, and fault-tolerance on the other hand.
 
   * Spark's shuffle process can be expanded from the following three points:
-      The division of the shuffle process
-      How to store intermediate results of shuffle
-      How to pull data from shuffle
+         1) The division of the shuffle process
+         2) How to store intermediate results of shuffle
+         3) How to pull data from shuffle
 
 * How to optimize Spark?
 
