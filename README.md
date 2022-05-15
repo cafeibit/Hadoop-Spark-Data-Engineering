@@ -51,21 +51,24 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
 * Spark works and advantages
          
-  * After the user submits the job on the client side, the driver will run the main method and create the spark context. 
-  * Execute the add operator to form a dag graph and input it to the dagscheduler, 
-  * and divide the stages according to the dependencies between add and input the task scheduler. 
-  * The task scheduler divides the stage into task sets and distributes them to the executors of each node for execution.
-
   * Based on in-memory computing, reducing inefficient disk interactions;
   * Efficient scheduling algorithm, based on DAG;
   * Fault tolerance mechanism Linage, the essence is DAG and Lingae
 
   * How spark works
+
+    After the user submits the job on the client side, the driver will run the main method and create the spark context. Execute the add operator to form a dag graph and input it to the dagscheduler, and divide the stages according to the dependencies between add and input the task scheduler. The task scheduler divides the stage into task sets and distributes them to the executors of each node for execution.
+
          ① Build the running environment of the Application, and the Driver creates a SparkContext
+         
          ② SparkContext applies to the resource manager (Standalone, Mesos, Yarn) for Executor resources, and the resource manager starts the StandaloneExecutorbackend (Executor)
+         
          ③ Executor applies for Task to SparkContext
+         
          ④ SparkContext distributes the application to the Executor
+         
          ⑤ SparkContext builds a DAG graph, DAGScheduler parses the DAG graph into stages, each stage has multiple tasks, forms a taskset and sends it to the task scheduler, and the task scheduler sends the task to the Executor to run
+         
          ⑥ Task runs on Executor and releases all resources after running
          
 * The principle of the active-standby switching mechanism of Spark
