@@ -43,11 +43,11 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
 * Components of Spark
 
- * Master: manage cluster and nodes, not participatingin computing
- * Worker: computing node, process not participating in computing, report to master
- * Driver: running program's main method, createing object of spark context
- * Spark context: Controls the entire application lifecycle, including components such as the dagsheduler and task scheduler.
- * Client: User-submitted program entry.
+  * Master: manage cluster and nodes, not participatingin computing
+  * Worker: computing node, process not participating in computing, report to master
+  * Driver: running program's main method, createing object of spark context
+  * Spark context: Controls the entire application lifecycle, including components such as the dagsheduler and task scheduler.
+  * Client: User-submitted program entry.
 
 * How Spark works
          
