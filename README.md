@@ -39,7 +39,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
 ## Master Spark Data Engineering
 
-### Spark Bsics
+### Spark Basics
 
 * Components of Spark
 
