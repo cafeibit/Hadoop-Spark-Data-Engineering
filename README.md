@@ -71,6 +71,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 * There are several deployment modes of Spark, and what are the characteristics of each mode
 
   * Local mode
+
     Spark does not have to run in the hadoop cluster, it can be specified locally by starting multiple threads. Running Spark applications directly locally in a multi-threaded manner is generally for the convenience of debugging.
 
     There are three types of local mode
@@ -80,6 +81,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
     --local[*] : start executors with the same number of cpus
 
    * Standalone mode
+
     Distributed deployment cluster with complete services, resource management and task monitoring are monitored by Spark itself, and this mode is also the basis of other modes.
 
    * Spark on yarn mode
