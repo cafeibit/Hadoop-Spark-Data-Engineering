@@ -56,6 +56,12 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * and divide the stages according to the dependencies between add and input the task scheduler. 
   * The task scheduler divides the stage into task sets and distributes them to the executors of each node for execution.
 
+* The principle of the active-standby switching mechanism of Spark
+
+  * Master can actually be configured with two. Spark's native standalone mode supports master-standby switching. When the Active Master node hangs up, the Standby Master can be switched to the Active Master.
+  * Spark Master master-standby switching can be based on two mechanisms, one is based on the file system, the other is based on ZooKeeper.
+  * The active-standby switching mechanism based on the file system needs to manually switch to the Standby Master after the Active Master hangs up; while the Zookeeper-based active-standby switching mechanism can automatically switch the Master.
+
 * Spark streaming and how it basically works
 
   * Spark streaming is an extension of the spark core API that can be used to process large-scale, high-throughput, fault-tolerant real-time data streams.
