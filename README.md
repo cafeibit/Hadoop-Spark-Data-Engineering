@@ -131,7 +131,13 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
          3) Application deployment is simplified. For example, after applications of various frameworks such as Spark and Storm are submitted by the client, Yarn is responsible for resource management and scheduling, using Container as a unit of resource isolation, and using it as a unit to use memory, cpu, etc.
 
          4) Yarn manages multiple services running in the Yarn cluster at the same time by means of queues, and can adjust the corresponding resource usage according to different types of application load conditions to achieve resource elastic management. 
-         
+      
+      About the container
+      
+         1) Container is the basic unit of resource allocation and scheduling, which encapsulates resources such as memory, CPU, disk, network bandwidth, etc. Currently yarn only encapsulates memory and CPU.
+         2) The Container is applied by the ApplicationMaster to the ResourceManager, and is asynchronously allocated to the ApplicationMaster by the resource scheduler in the ResouceManager
+         3) The operation of the Container is initiated by the ApplicationMaster to the NodeManager where the resource is located, and the Container needs to provide internal execution task commands when it is running.
+      
    * Spark On Mesos mode
 
      This model is officially recommended (of course, one of the reasons is blood relationship). It is precisely because Spark was developed with Mesos in mind, so now, Spark running on Mesos will be more flexible and more natural than running on YARN. Users can choose one of two scheduling modes to run their applications:
