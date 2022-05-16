@@ -103,7 +103,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
      Distributed deployment of clusters, resource and task monitoring are managed by yarn, but currently only supports coarse-grained resource allocation, including cluster and client operation modes, cluster is suitable for production, driver runs on cluster sub-nodes, with fault tolerance, client is suitable for debugging, The driver runs on the client side.
 
-    Describe the process by which Yarn performs a task?
+    Describe the process by which Yarn performs a task
     
          1) The client client submits the Application to the ResouceManager, and the ResouceManager accepts the Application and selects a node according to the cluster resource status to start the Application's task scheduler driver (ApplicationMaster)
          
@@ -122,7 +122,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
          **One detail to pay attention to:** 
          Note: If the ResourceManager fails to satisfy the resource request of the driver (ApplicationMaster) for the first time, and later finds that there are idle resources, it will actively send the metadata information of the available resources to the driver (ApplicationMaster) to provide more resources. for running the current program.
     
-     What are the advantages of Spark on Yarn mode?
+     What are the advantages of Spark on Yarn mode
      
          1) Share cluster resources with other computing frameworks (Spark framework and MapReduce framework run at the same time, if Yarn is not used for resource allocation, MapReduce will allocate very few memory resources, which is inefficient); resources are allocated on demand, thereby improving cluster resource utilization, etc.
 
@@ -153,7 +153,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
          2) How to store intermediate results of shuffle
          3) How to pull data from shuffle
 
-* How to optimize Spark?
+* How to optimize Spark
 
   * Spark tuning is more complicated, but it can be roughly divided into three aspects:
 
@@ -163,10 +163,10 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
          3) Tuning at the JVM level: set the appropriate amount of resources, set a reasonable JVM, enable efficient serialization methods such as kyro, increase off head memory, etc.
 
-  * Where is data locality determined?
+  * Where is data locality determined
     --Which machine the specific task runs on is determined when the dag divides the stages
     
-  * What is the elasticity of RDD?
+  * What is the elasticity of RDD
   
          1) Automatically switch between memory and disk storage;
 
@@ -182,17 +182,17 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
          7) High elasticity of data sharding.    
 
-  * What are the pitfalls of RDDs?
+  * What are the pitfalls of RDDs
  
           1) Fine-grained write and update operations (such as web crawlers) are not supported, and spark writes data in coarse-grained terms. The so-called coarse-grained is to write data in batches, in order to improve efficiency. However, reading data is fine-grained, which means that it can be read one by one.
 
           2) Incremental iterative calculation is not supported, but Flink does
 
-  * What are the types of data locality in Spark?
+  * What are the types of data locality in Spark
     
     There are three types of data locality in Spark:
 
-          1)  PROCESS_LOCAL refers to reading data cached on the local node
+          1) PROCESS_LOCAL refers to reading data cached on the local node
     
           2) NODE_LOCAL refers to reading the local node hard disk data
     
@@ -216,6 +216,6 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
 
   * Introduce the join operation optimization experience?
           
-          In fact, there are two common types of join: map-side join and reduce-side join. When joining large and small tables, using map-side joins can significantly improve efficiency. Associating multiple pieces of data is a very common usage in data processing, but in distributed computing systems, this problem often becomes very troublesome, because the join operation provided by the framework generally sends all data to all the data according to the key. Go to the reduce partition, which is the process of shuffle. Causes a lot of network and disk IO consumption, and the operation efficiency is extremely low. This process is generally called reduce-side-join. If one of the tables is small, we can implement data association on the map side by ourselves, skip the process of shuffling a large amount of data, and the running time is greatly shortened. Depending on the data, the performance may be several times to dozens of times. promote.
+          In fact, there are two common types of join: map-side join and reduce-side join. When joining large and small tables, using map-side joins can significantly improve efficiency. Associating multiple pieces of data is a very common usage in data processing, but in distributed computing systems, this problem often becomes very troublesome, because the join operation provided by the framework generally sends all data to all the data according to the key. Go to the reduce partition, which is the process of shuffle. Causes a lot of network and disk IO consumption, and the operation efficiency is extremely low. This process is generally called reduce-side-join. If one of the tables is small, we can implement data association on the map side by ourselves, skip the process of shuffling a large amount of data, and the running time is greatly shortened. Depending on the data, the performance may be several times to dozens of times promote.
           
           
