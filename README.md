@@ -8,7 +8,7 @@
 * <b>Yet Another Resource Negotiator (YARN)</b> is the resource manager across clusters.
 * The extended Hadoop Ecosystem consists of libraries or software packages that are commonly used with or installed on top of the Hadoop core. The Hadoop ecosystem is made up of components that support one another for Big Data processing.
 
-### The four main stages of the Hadoop Ecosystem are Ingest, Store, Process and Analyze, and Access:
+### The four main stages of the Hadoop Ecosystem are Ingest, Store, Process / Analyze, and Access:
 
 * Ingesting is the first stage of Big Data processing<br>
 To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop</b><br>
