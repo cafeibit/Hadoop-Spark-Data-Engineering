@@ -80,41 +80,31 @@ Scenario Analysis
     `KEY `idx_a_b_c` (`a`, `b`, `c`)`
     `select * from _t where a = 1 and b = 2 order by c desc limit 10000, 10;`
     
-    For large paging scenarios, you can give priority to product optimization requirements. If there is no optimization, there are the following two optimization methods:
+    For large paging scenarios, you can give priority to product optimization requirements. If there is no optimization, there are the following two optimization methods:  
+    One is to pass the last data of the last time, that is, the above c, and then do "c < xxx" processing, but this generally requires changing the interface protocol, which is not necessarily feasible.
+    The other is to use the delayed association method to reduce the SQL return to the table, but remember that the index needs to be completely covered to be effective. The SQL changes are as follows
 
-One is to pass the last data of the last time, that is, the above c, and then do "c < xxx" processing, but this generally requires changing the interface protocol, which is not necessarily feasible.
-
-The other is to use the delayed association method to reduce the SQL return to the table, but remember that the index needs to be completely covered to be effective. The SQL changes are as follows
-
-```
-SELECT
- t1.*
-FROM
- _t t1,
+  ```
+  SELECT t1.*
+  FROM _t t1,
  ( SELECT id FROM _t WHERE a = 1 AND b = 2 ORDER BY c DESC LIMIT 10000, 10 ) t2
-WHERE
- t1.id = t2.id;
+  WHERE t1.id = t2.id;
  ```
  
  *  Case 4. in + order by
     *index*
     `KEY `idx_shopid_status_created` (`shop_id`, `order_status`, `created_at`)`
     ```
-    SELECT
- *
-FROM
- _order
-WHERE
- shop_id = 1
- AND order_status IN ( 1, 2, 3 )
-ORDER BY
- created_at DESC
- LIMIT 10
+    SELECT *
+    FROM _order
+    WHERE shop_id = 1 AND order_status IN ( 1, 2, 3 )
+    ORDER BY created_at DESC
+    LIMIT 10
  ```
  
- The in query is searched by n*m at the bottom of MySQL, which is similar to union, but more efficient than union.
+  The in query is searched by n*m at the bottom of MySQL, which is similar to union, but more efficient than union.
 
-When the in query performs cost calculation (cost = number of tuples * average value of IO), the number of tuples is obtained by querying the values contained in in, so this calculation process will be relatively slow, so MySQL set A critical value (eq_range_index_dive_limit) is set. After 5.6, the cost of the column will not participate in the calculation after this critical value is exceeded.
+  When the in query performs cost calculation (cost = number of tuples * average value of IO), the number of tuples is obtained by querying the values contained in in, so this calculation process will be relatively slow, so MySQL set A critical value (eq_range_index_dive_limit) is set. After 5.6, the cost of the column will not participate in the calculation after this critical value is exceeded.
 
 As a result, the execution plan selection will be inaccurate. The default is 200, that is, the in condition exceeds 200 data, which will cause problems in the cost calculation of in, which may cause the index selected by Mysql to be inaccurate.
 
@@ -124,15 +114,10 @@ The processing method can exchange the order before and after (order_status, cre
     *index*
     `KEY `idx_shopid_created_status` (`shop_id`, `created_at`, `order_status`)`
     ```
-    SELECT
- *
-FROM
- _order
-WHERE
- shop_id = 1
- AND created_at > '2021-01-01 00:00:00'
- AND order_status = 10
- ```
+    SELECT  *
+    FROM _order
+    WHERE shop_id = 1 AND created_at > '2021-01-01 00:00:00' AND order_status = 10
+     ```
  
  Range queries also have "IN, between"
  
