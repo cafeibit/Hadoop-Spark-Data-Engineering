@@ -100,11 +100,11 @@ Scenario Analysis
     WHERE shop_id = 1 AND order_status IN ( 1, 2, 3 )
     ORDER BY created_at DESC
     LIMIT 10
- ```
+    ```
  
-  The in query is searched by n*m at the bottom of MySQL, which is similar to union, but more efficient than union.
+ The in query is searched by n*m at the bottom of MySQL, which is similar to union, but more efficient than union.
 
-  When the in query performs cost calculation (cost = number of tuples * average value of IO), the number of tuples is obtained by querying the values contained in in, so this calculation process will be relatively slow, so MySQL set A critical value (eq_range_index_dive_limit) is set. After 5.6, the cost of the column will not participate in the calculation after this critical value is exceeded.
+ When the in query performs cost calculation (cost = number of tuples * average value of IO), the number of tuples is obtained by querying the values contained in in, so this calculation process will be relatively slow, so MySQL set A critical value (eq_range_index_dive_limit) is set. After 5.6, the cost of the column will not participate in the calculation after this critical value is exceeded.
 
 As a result, the execution plan selection will be inaccurate. The default is 200, that is, the in condition exceeds 200 data, which will cause problems in the cost calculation of in, which may cause the index selected by Mysql to be inaccurate.
 
