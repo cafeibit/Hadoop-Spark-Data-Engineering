@@ -1,6 +1,48 @@
-# SQL for Data Engineering
+# SQL for Big Data Engineering
 
-## SQL Basics
+## SQL on Hadoop Parse and Optimization
+
+SQL on Hadoop to use SQL on HDFS to analysis big data
+  * Connector to Hadoop: Oracle SQL Connector to Hadoop HDFS and Teradata Connector to Hadoop
+  * SQL and Hadoop: Hadapt, Rainstor, Citus Data, Splice Machine and PolyBase
+  * SQL on Hadoop: Hive, SparkSQL, Impala, Presto, VectorH, Drill, HAWQ, IBM's Bid SQL 
+
+How SQL query and parse on execution
+1. Semantic parsed
+2. Metadata binding
+3. Optimizing executive strategy
+4. Execute
+
+Flink SQL
+* SQL API: Calcite Catalog -> SQL Parser by Calcite & Validator -> Calcite Logical Plan ->  Calcite Optimizer -> Data Stream
+* Table API: Calcite Catalog -> Table API Validator -> Calcite Logical Plan ->  Calcite Optimizer -> DataSet
+
+Hive
+1. Parser: transfer SQL to abstract syntax tree - AST
+2. Semantic Analyzer: transfer AST to QB
+3. Calcite Plan Generator (Logical Plan Generator): OP to RelNode
+4. Logical Optimizer: optimize Logical Plan - OP Tree
+5. Physical Plan Generator: Task Tree
+6. Physical Optimizer: Task Tree
+
+Calcite and SQL Parser
+* Apache Calcite: SQL API and JDBC
+* Pluggable Catalog, Avatica, Adapter, SQL Dialect
+* Pig, Datalog, Morel
+* parse SQL -> AST (SQLNode) -> Sanmetic Validator & Analyzed (RelNode - Logical Plan) -> Logical Plan Optimized -> Execute (Phycial Plan and Executiion)
+
+SQL Optimization & Calcite
+* Relational Algebra in SQL - RelNode
+* Relational Expression - Logica Plan
+* Rule Based Optimization (RBO) & Cost Based Optimization (CBO)
+* Predicate Pushdown, Constant Folding, Column Purning
+* RelOptPlanner, RBO - HepPlanner & Spark Catalyst
+* Volcano/Cascade Optimizer
+
+### Spark SQL
+
+
+
 
 ### General steps for SQL optimization
 
