@@ -20,7 +20,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * <b>HBase</b> is a column-oriented non-relational database system that runs on top of HDFS. It provides real time wrangling access to the Hadoop file system. HBase uses hash tables to store data in indexes and allow for random access of data, which makes lookups faster.
   * <b>Cassandra</b> is a scalable, NoSQL database designed to have no single point of failure.
 
-* In the Analyze Process/Pipelines stage by **Airflow**<br>
+* In the Analyze Process/Pipelines stage by <a href="./Airflow/">**Airflow**</a><br>
   * Airflow has a modular architecture and uses a message queue to orchestrate an arbitrary number of workers, ready to scale to infinity.
   * Airflow pipelines are defined in Python, allowing for dynamic pipeline generation. This allows for writing code that instantiates pipelines dynamically.
   * Easily define your own operators and extend libraries to fit the level of abstraction that suits your environment. 
@@ -28,7 +28,7 @@ To get data from different sources and use tools like <b>Flume</b> and <b>Sqoop<
   * Airflow provides many plug-and-play operators that are ready to execute your tasks on Google Cloud Platform, Amazon Web Services, Microsoft Azure and many other third-party services. This makes Airflow easy to apply to current infrastructure and extend to next-gen technologies.
   * Monitor, schedule and manage your workflows via a robust and modern web application. No need to learn old, cron-like interfaces. You always have full insight into the status and logs of completed and ongoing tasks.
   
-* In the Analyze Data stage<br>
+* In the Analyze Data stage
    * In the Analyze Data stage, Pig is used for analyzing large amounts of data.
    * Pig is a procedural data flow language and a procedural programming language that follows an order and set of commands. Pig is used for analyzing large amounts of data. Pig is a procedural data flow language and a procedural programming language that follows an order and set of commands.
    * Hive is used mainly for creating reports and operates on the server side of a cluster. Hive is a declarative programming language, which means it allows users to express which data they wish to receive.
