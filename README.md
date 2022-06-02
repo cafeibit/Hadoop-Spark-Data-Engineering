@@ -1,6 +1,6 @@
 # Use Hadoop & Spark to work on Data Engineering
 
-## Master Hadoop Ecosystem
+## Hadoop Ecosystem
 
 * <b>Hadoop Common</b> refers to the common utilities and libraries that support the other Hadoop modules. 
 * <b>Hadoop Distributed File System (HDFS)</b> stores the data collected from the ingestion and distributes the data across multiple nodes. 
