@@ -1,4 +1,6 @@
-# Hive Basic <a href="https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/hdinsight-use-hive">What is Apache Hive and HiveQL on Azure HDInsight?</a>
+# Hive Basic 
+
+<a href="https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/hdinsight-use-hive">What is Apache Hive and HiveQL on Azure HDInsight?</a>
 
 ## <a href="https://lakefs.io/hive-metastore-why-its-still-here-and-what-can-replace-it/">Hive Metastore – Why It’s Still Here and What Can Replace It? by Einat Orr, PhD</a>
 
